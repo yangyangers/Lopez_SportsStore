@@ -1,0 +1,72 @@
+﻿@model Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Name - SportsStore</title>
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <style>
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            margin: 1rem;
+            padding: 1rem;
+        }
+
+        .product-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .product-badge {
+            float: right;
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.3rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-description {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .add-to-cart-btn {
+            float: right;
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <div class="product-header">
+            @Model.Name
+            <span class="product-badge">@Model.Price.ToString("₱#,##0.00")</span>
+        </div>
+
+        <form id="@Model.ProductID" asp-page="/Cart" method="post">
+            <input type="hidden" asp-for="ProductID" />
+            <input type="hidden" name="returnUrl"
+                   value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+            <div class="product-description">
+                @Model.Description
+            </div>
+
+            <button type="submit" class="btn btn-success add-to-cart-btn">
+                <i class="fas fa-cart-plus"></i> Add To Cart
+            </button>
+        </form>
+    </div>
+</body>
+</html>

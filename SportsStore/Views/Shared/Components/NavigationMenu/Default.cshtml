@@ -1,0 +1,43 @@
+﻿@model IEnumerable<string>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Category Menu</title>
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <style>
+        .category-btn {
+            width: 100%;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            font-weight: 500;
+        }
+
+            .category-btn:hover {
+                background-color: #e2e6ea;
+            }
+
+            .category-btn.active {
+                background-color: #007bff;
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <a class="btn btn-outline-secondary category-btn @(ViewBag.SelectedCategory == null ? "active" : "")"
+       asp-action="Index" asp-controller="Home" asp-route-category="">
+        Home
+    </a>
+
+    @foreach (string category in Model)
+    {
+        <a class="btn category-btn @(category == ViewBag.SelectedCategory ? "btn-primary active" : "btn-outline-secondary")"
+           asp-action="Index" asp-controller="Home"
+           asp-route-category="@category"
+           asp-route-productPage="1">
+            @category
+        </a>
+    }
+</body>
+</html>

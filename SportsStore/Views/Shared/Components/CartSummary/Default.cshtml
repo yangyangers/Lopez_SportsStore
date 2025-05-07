@@ -1,0 +1,45 @@
+﻿@model Cart
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart Summary</title>
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <style>
+        .cart-summary {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+            .cart-summary small {
+                color: #f8f9fa;
+                font-size: 0.9rem;
+            }
+
+            .cart-summary .btn {
+                padding: 0.3rem 0.6rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="cart-summary">
+        @if (Model.Lines.Count() > 0)
+        {
+            <small>
+                <strong>Your cart:</strong>
+                @Model.Lines.Sum(x => x.Quantity) item(s),
+                @Model.ComputeTotalValue().ToString("c")
+            </small>
+        }
+        <a class="btn btn-sm btn-light" asp-page="/Cart"
+           asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"
+           title="View Cart">
+            <i class="fa fa-shopping-cart"></i>
+        </a>
+    </div>
+</body>
+</html>

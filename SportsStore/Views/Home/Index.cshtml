@@ -1,0 +1,43 @@
+﻿@model ProductsListViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product List</title>
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <style>
+        .product-listing {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pagination-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-listing">
+        @foreach (var p in Model.Products)
+        {
+            <partial name="ProductSummary" model="p" />
+        }
+    </div>
+
+    <div class="pagination-container">
+        <div page-model="@Model.PagingInfo"
+             page-action="Index"
+             page-classes-enabled="true"
+             page-class="btn"
+             page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary"
+             page-url-category="@Model.CurrentCategory"
+             class="btn-group m-1">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿@page
+@model CartModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Your Cart - SportsStore</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-table thead th {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        .cart-table td, .cart-table th {
+            vertical-align: middle;
+        }
+
+        .btn-outline-danger {
+            border-width: 1.5px;
+        }
+
+        .summary-row td {
+            font-weight: bold;
+            background-color: #e9ecef;
+        }
+
+        .action-buttons a {
+            min-width: 180px;
+        }
+
+        .alert {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container bg-white shadow rounded p-4">
+        <h2>🛒 Your Cart</h2>
+
+        @if (!Model.Cart.Lines.Any())
+        {
+            <div class="alert alert-info">Your cart is empty.</div>
+        }
+        else
+        {
+            <table class="table table-bordered table-hover cart-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Quantity</th>
+                        <th>Item</th>
+                        <th class="text-right">Price</th>
+                        <th class="text-right">Subtotal</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var line in Model.Cart.Lines)
+                    {
+                        <tr>
+                            <td class="text-center">@line.Quantity</td>
+                            <td>@line.Product.Name</td>
+                            <td class="text-right">@line.Product.Price.ToString("₱#,##0.00")</td>
+                            <td class="text-right">
+                                @((line.Quantity * line.Product.Price).ToString("₱#,##0.00"))
+                            </td>
+                            <td class="text-center">
+                                <form asp-page-handler="Remove" method="post" class="d-inline">
+                                    <input type="hidden" name="ProductID" value="@line.Product.ProductID" />
+                                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        ✖ Remove
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr class="summary-row">
+                        <td colspan="3" class="text-right">Total:</td>
+                        <td class="text-right">@Model.Cart.ComputeTotalValue().ToString("₱#,##0.00")</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="text-center action-buttons mt-4">
+                <a class="btn btn-outline-secondary mr-2" href="@Model.ReturnUrl">← Continue Shopping</a>
+                <a class="btn btn-success" asp-action="Checkout" asp-controller="Order">✔ Checkout</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

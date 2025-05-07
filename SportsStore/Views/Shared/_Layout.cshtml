@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sports Store</title>
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .cart-summary {
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        .header-bar {
+            background-color: #343a40;
+            padding: 1rem;
+        }
+
+        #categories {
+            background-color: #ffffff;
+            border-right: 1px solid #dee2e6;
+            padding: 1rem;
+            min-height: 100vh;
+            box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-area {
+            padding: 2rem;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .row-layout {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header-bar text-white">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md navbar-brand">SPORTS STORE</div>
+                <div class="col-md text-md-right cart-summary">
+                    <vc:cart-summary />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-layout no-gutters">
+        <div id="categories" class="col-12 col-md-3">
+            <vc:navigation-menu />
+        </div>
+        <div class="col-12 col-md-9 content-area">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

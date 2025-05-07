@@ -1,0 +1,354 @@
+﻿/* SportsStore - Site Stylesheet */
+
+/* Variables for consistent color scheme */
+:root {
+    --primary: #5cb85c;
+    --primary-hover: #4cae4c;
+    --secondary: #337ab7;
+    --secondary-hover: #286090;
+    --danger: #d9534f;
+    --light-gray: #f5f5f5;
+    --gray: #e8e8e8;
+    --dark-gray: #777;
+    --darker-gray: #333;
+    --white: #fff;
+    --border-color: #ddd;
+}
+
+/* Base styles */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    padding-top: 70px;
+    background-color: var(--white);
+}
+
+/* Navigation bar */
+.navbar {
+    background-color: var(--darker-gray);
+    border-color: var(--dark-gray);
+}
+
+.navbar-brand {
+    color: var(--white);
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-brand {
+    color: var(--white);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: var(--white);
+}
+
+/* Category menu */
+.btn-block {
+    margin-bottom: 5px;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary-hover);
+}
+
+    .btn-primary:hover {
+        background-color: var(--primary-hover);
+    }
+
+.btn-secondary {
+    background-color: var(--secondary);
+    border-color: var(--secondary-hover);
+}
+
+    .btn-secondary:hover {
+        background-color: var(--secondary-hover);
+    }
+
+.btn-danger {
+    background-color: var(--danger);
+}
+
+/* Categories Side Menu */
+.categories-menu {
+    margin-bottom: 20px;
+}
+
+    .categories-menu .btn {
+        text-align: left;
+    }
+
+        .categories-menu .btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+/* Product grid and items */
+.product {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: var(--white);
+    transition: box-shadow 0.3s;
+}
+
+    .product:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product h3 {
+        margin-top: 0;
+        font-size: 18px;
+        color: var(--darker-gray);
+    }
+
+    .product .category {
+        font-size: 12px;
+        color: var(--dark-gray);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .product .description {
+        font-size: 14px;
+        color: var(--dark-gray);
+        margin-bottom: 15px;
+    }
+
+    .product .price {
+        font-weight: bold;
+        color: var(--primary);
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+/* Pagination */
+.pagination > li > a {
+    color: var(--darker-gray);
+}
+
+.pagination > .active > a {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Cart summary */
+.cart-summary {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+    .cart-summary h3 {
+        margin-top: 0;
+        color: var(--darker-gray);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .cart-summary table {
+        width: 100%;
+    }
+
+    .cart-summary .badge {
+        background-color: var(--primary);
+    }
+
+/* Cart details */
+.cart-container {
+    margin-bottom: 30px;
+}
+
+.cart-header {
+    background-color: var(--light-gray);
+    padding: 10px 15px;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+}
+
+.cart-body {
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 5px 5px;
+    padding: 15px;
+}
+
+.cart-line {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+    .cart-line:last-child {
+        border-bottom: none;
+    }
+
+    .cart-line .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+.cart-total {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.checkout-button {
+    margin-top: 20px;
+}
+
+/* Forms */
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(92, 184, 92, 0.2);
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+/* Validation styles */
+.field-validation-error {
+    color: var(--danger);
+    font-size: 12px;
+}
+
+.input-validation-error {
+    border-color: var(--danger);
+}
+
+/* Checkout form */
+.checkout-form {
+    margin-top: 20px;
+}
+
+.summary-panel {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Admin area */
+.admin-area {
+    margin-top: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    .admin-table th {
+        background-color: var(--light-gray);
+    }
+
+    .admin-table td, .admin-table th {
+        padding: 10px;
+        border: 1px solid var(--border-color);
+    }
+
+.admin-button-group {
+    margin-bottom: 20px;
+}
+
+/* Alerts and messages */
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-brand {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+
+    .product {
+        text-align: center;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+        .cart-item .btn {
+            margin-top: 10px;
+        }
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    padding: 20px 0;
+    background-color: var(--light-gray);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+/* Pager */
+.pager {
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+    .pager li {
+        display: inline;
+    }
+
+        .pager li > a {
+            display: inline-block;
+            padding: 5px 14px;
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--darker-gray);
+        }
+
+            .pager li > a:hover {
+                background-color: var(--light-gray);
+            }
+
+    .pager .disabled > a {
+        color: var(--dark-gray);
+        cursor: not-allowed;
+        background-color: var(--white);
+    }

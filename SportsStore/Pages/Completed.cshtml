@@ -1,0 +1,57 @@
+﻿@page
+
+@functions {
+    [BindProperty(SupportsGet = true)]
+    public string OrderId { get; set; }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Order Confirmation - SportsStore</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+        }
+
+        .confirmation-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            background-color: #ffffff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #28a745;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            padding: 0.6rem 2rem;
+            font-size: 1rem;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <h2>🎉 Thanks!</h2>
+        <p>Thanks for placing order <strong>#@OrderId</strong>.</p>
+        <p>We'll ship your goods as soon as possible.</p>
+        <a class="btn btn-primary mt-3" asp-controller="Home">Return to Store</a>
+    </div>
+</body>
+</html>
